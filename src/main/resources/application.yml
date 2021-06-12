@@ -1,0 +1,40 @@
+db:
+  driver: com.mysql.cj.jdbc.Driver
+  url: jdbc:mysql://localhost:3306/ryt_transaction?createDatabaseIfNotExist=true
+  username: root
+  password:
+spring:
+  jpa:
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.MySQL57Dialect
+    hibernate:
+      ddl-auto: update
+      naming_strategy: org.hibernate.cfg.ImprovedNamingStrategy
+    database: mysql
+    show-sql: true
+  datasource:
+    driverClassName: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/ryt_transaction?createDatabaseIfNotExist=true
+    username: root
+    password:
+  application:
+    name: transaction-service
+debug: true
+eureka:
+  client:
+    service-url:
+      default-zone: http://localhost:8761
+server:
+  port: 8084
+org:
+  hibernate:
+    envers:
+      audit_table_suffix: _audit_
+feign:
+  client:
+    config:
+      stores:
+        connectTimeout: 5000
+        readTimeout: 5000
+        loggerLevel: full
